@@ -72,7 +72,6 @@ exports.deleteJeuxById = (req, res) => {
             res.json({ message: "Jeux supprimé", id: id });
         }
     );
-<<<<<<< HEAD
 };
 
 
@@ -228,6 +227,4 @@ exports.deleteJoueurById = (req, res) => {
             res.json({ message: "Joueur supprimé", id: id });
         }
     );
-=======
->>>>>>> ef21d99e771ec09c071987cefaab6d6da23a6078
 };
