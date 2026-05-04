@@ -27,12 +27,12 @@ async function chargerJeux() {
         data.forEach(Jeux => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Jeux.id}</td>
+                <td>${Jeux.Jeux_id}</td>
                 <td>${escapeHtml(Jeux.nom)}</td>
                 <td>${escapeHtml(Jeux.note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Jeux.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerJeu(${Jeux.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${Jeux.Jeux_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerJeu(${Jeux.Jeux_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);

@@ -11,7 +11,7 @@ function showMessage(text, isError = false) {
 
 async function chargerEtudiant() {
     try {
-        const res = await apiFetch('/api/Jeux/' + id);
+        const res = await apiFetch('/api/Jeux/' + Jeux_id);
         const data = await res.json();
 
         if (!res.ok) {
@@ -32,7 +32,7 @@ form.addEventListener('submit', async (e) => {
     const note = document.getElementById('note').value.trim();
 
     try {
-        const res = await apiFetch('/api/Jeux/' + id, {
+        const res = await apiFetch('/api/Jeux/' + Jeux_id, {
             method: 'PUT',
             body: JSON.stringify({ nom, note })
         });
