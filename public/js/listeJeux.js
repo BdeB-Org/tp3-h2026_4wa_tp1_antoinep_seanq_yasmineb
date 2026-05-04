@@ -16,22 +16,22 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerJeux() {
     try {
-        const res = await apiFetch('/api/etudiants');
+        const res = await apiFetch('/api/Jeux');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(etudiant => {
+        data.forEach(Jeux => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${Jeux.id}</td>
+                <td>${escapeHtml(Jeux.nom)}</td>
+                <td>${escapeHtml(Jeux.note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${Jeux.id}">Modifier</a>
+                    <button class="danger" onclick="supprimerJeux(${Jeux.id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -41,11 +41,11 @@ async function chargerEtudiants() {
     }
 }
 
-async function supprimerEtudiant(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+async function supprimerJeux(id) {
+    if (!confirm('Voulez-vous vraiment supprimer ce jeux ?')) return;
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, { method: 'DELETE' });
+        const res = await apiFetch('/api/Jeux/' + id, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {
@@ -53,10 +53,10 @@ async function supprimerEtudiant(id) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerJeux();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerJeux();

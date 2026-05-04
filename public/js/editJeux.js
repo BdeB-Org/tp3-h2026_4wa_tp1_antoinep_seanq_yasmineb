@@ -11,7 +11,7 @@ function showMessage(text, isError = false) {
 
 async function chargerEtudiant() {
     try {
-        const res = await apiFetch('/api/etudiants/' + id);
+        const res = await apiFetch('/api/Jeux/' + id);
         const data = await res.json();
 
         if (!res.ok) {
@@ -19,7 +19,7 @@ async function chargerEtudiant() {
         }
 
         document.getElementById('nom').value = data.nom;
-        document.getElementById('programme').value = data.programme;
+        document.getElementById('note').value = data.note;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -29,12 +29,12 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const note = document.getElementById('note').value.trim();
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, {
+        const res = await apiFetch('/api/Jeux/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ nom, note })
         });
 
         const data = await res.json();
@@ -45,7 +45,7 @@ form.addEventListener('submit', async (e) => {
 
         showMessage(data.message);
         setTimeout(() => {
-            window.location.href = '/liste.html';
+            window.location.href = '/listeJeux.html';
         }, 800);
     } catch (err) {
         showMessage(err.message, true);
@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID étudiant manquant', true);
+    showMessage('ID jeux manquant', true);
 } else {
     chargerEtudiant();
 }
