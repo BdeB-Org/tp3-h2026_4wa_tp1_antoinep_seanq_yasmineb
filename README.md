@@ -1,2 +1,0 @@
-# tp3-h2026_4wa_tp1_antoinep_seanq_yasmineb
-tp3-h2026_4wa_tp1_antoinep_seanq_yasmineb created by GitHub Classroom
