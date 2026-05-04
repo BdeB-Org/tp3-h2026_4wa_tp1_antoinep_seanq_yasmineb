@@ -46,14 +46,14 @@ async function chargerCommentaires() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const console = document.getElementById('console').value.trim();
-    const plateforme = document.getElementById('plateforme').value.trim();
-    const commentaire = document.getElementById('commentaire').value.trim();
+    const Console_type = document.getElementById('Console_type').value.trim();
+    const Plateforme_nom = document.getElementById('Plateforme_nom').value.trim();
+    const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
 
     try {
-        const res = await apiFetch('/api/etudiants', {
+        const res = await apiFetch('/api/Commentaire', {
             method: 'POST',
-            body: JSON.stringify({ console, plateforme, commentaire })
+            body: JSON.stringify({ Console_type, Plateforme_nom, Commentaire_jeu })
         });
 
         const data = await res.json();

@@ -18,9 +18,9 @@ async function chargerCommentaires() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('console').value = data.Console_type;
-        document.getElementById('plateforme').value = data.Plateforme_nom;
-        document.getElementById('commentaire').value = data.Commentaire_jeu;
+        document.getElementById('Console_type').value = data.Console_type;
+        document.getElementById('Plateforme_nom').value = data.Plateforme_nom;
+        document.getElementById('Commentaire_jeu').value = data.Commentaire_jeu;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -29,14 +29,14 @@ async function chargerCommentaires() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const console = document.getElementById('console').value.trim();
-    const plateforme = document.getElementById('plateforme').value.trim();
-    const commentaire = document.getElementById('commentaire').value.trim();
+    const Console_type = document.getElementById('Console_type').value.trim();
+    const Plateforme_nom = document.getElementById('Plateforme_nom').value.trim();
+    const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
 
     try {
         const res = await apiFetch('/api/Commentaire/' + Joueurs_id, {
             method: 'PUT',
-            body: JSON.stringify({ console, plateforme, commentaire })
+            body: JSON.stringify({ Console_type, Plateforme_nom, Commentaire_jeu })
         });
 
         const data = await res.json();
