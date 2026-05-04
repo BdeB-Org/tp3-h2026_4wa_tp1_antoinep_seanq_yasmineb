@@ -30,7 +30,7 @@ async function chargerJeux() {
                 <td>${escapeHtml(Jeux.Jeux_nom)}</td>
                 <td>${escapeHtml(Jeux.Jeux_note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Jeux.Jeux_id}">Modifier</a>
+                    <a class="btn-link" href="/editJeux.html?id=${Jeux.Jeux_id}">Modifier</a>
                     <button class="danger" onclick="supprimerJeux(${Jeux.Jeux_id})">Supprimer</button>
                 </td>
             `;

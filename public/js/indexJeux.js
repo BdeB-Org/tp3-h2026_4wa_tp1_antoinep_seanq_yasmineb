@@ -31,7 +31,7 @@ async function chargerJeux() {
                 <td>${escapeHtml(Jeux.Jeux_nom)}</td>
                 <td>${escapeHtml(Jeux.Jeux_note)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Jeux.Jeux_id}">Modifier</a>
+                    <a class="btn-link" href="/editJeux.html?id=${Jeux.Jeux_id}">Modifier</a>
                     <button class="danger" onclick="supprimerJeu(${Jeux.Jeux_id})">Supprimer</button>
                 </td>
             `;
@@ -45,8 +45,8 @@ async function chargerJeux() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const note = document.getElementById('note').value.trim();
+    const Jeux_nom = document.getElementById('Jeux_nom').value.trim();
+    const Jeux_note = document.getElementById('Jeux_note').value.trim();
 
     try {
         const res = await apiFetch('/api/Jeux/', {
