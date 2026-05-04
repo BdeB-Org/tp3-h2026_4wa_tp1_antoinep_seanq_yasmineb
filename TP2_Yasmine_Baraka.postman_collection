@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "d37cc507-b30b-4ec4-91cc-19eefbf72e30",
+    "name": "TP2-Tests-Yas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53931935",
+    "_collection_link": "https://go.postman.co/collection/53931935-d37cc507-b30b-4ec4-91cc-19eefbf72e30?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/Joueur",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "Joueur"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Joueurs_id\": \"6\",\r\n    \"Nom\": \"Hatsune\",\r\n    \"Prénom\": \"Miku\",\r\n    \"Pseudo\": \"SekaiDe\",\r\n    \"Nbr_jeux_joues\": \"127\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/Joueur",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "Joueur"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Nom\": \"Baraka\",\r\n    \"Prénom\": \"Yasmine\",\r\n    \"Pseudo\": \"Nova\",\r\n    \"Nbr_jeux_joues\": \"666\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/Joueur/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "Joueur",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/Joueur",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "Joueur"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
