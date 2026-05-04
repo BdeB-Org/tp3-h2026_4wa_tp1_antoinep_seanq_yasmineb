@@ -9,17 +9,17 @@ function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
-async function chargerEtudiant() {
+async function chargerJeux() {
     try {
-        const res = await apiFetch('/api/Jeux/' + Jeux_id);
+        const res = await apiFetch('/api/Jeux/' + id);
         const data = await res.json();
 
         if (!res.ok) {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('nom').value = data.Jeux_nom;
-        document.getElementById('note').value = data.Jeux_note;
+        document.getElementById('Jeux_nom').value = data.Jeux_nom;
+        document.getElementById('Jeux_note').value = data.Jeux_note;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -28,11 +28,11 @@ async function chargerEtudiant() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const note = document.getElementById('note').value.trim();
+    const Jeux_nom = document.getElementById('Jeux_nom').value.trim();
+    const Jeux_note = document.getElementById('Jeux_note').value.trim();
 
     try {
-        const res = await apiFetch('/api/Jeux/' + Jeux_id, {
+        const res = await apiFetch('/api/Jeux/' + id, {
             method: 'PUT',
             body: JSON.stringify({ Jeux_nom, Jeux_note })
         });
@@ -55,5 +55,5 @@ form.addEventListener('submit', async (e) => {
 if (!id) {
     showMessage('ID jeux manquant', true);
 } else {
-    chargerEtudiant();
+    chargerJeux();
 }
