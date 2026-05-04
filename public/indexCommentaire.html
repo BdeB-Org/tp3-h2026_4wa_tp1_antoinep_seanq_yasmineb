@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des commentaires</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h1>Gestion des commentaires</h1>
+                <p class="small">Ajout et affichage dans un tableau</p>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/listeCommentaire.html">Voir la liste complète</a>
+                <button class="secondary" onclick="logout()">Déconnexion</button>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <h2>Ajouter un commentaire</h2>
+        <form id="formAjout">
+            <input type="text" id="console" placeholder="Console" required>
+            <input type="text" id="plateforme" placeholder="Plateforme" required>
+            <input type="text" id="commentaire" placeholder="Commentaire" required>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <h2>Ensemble des commentaires</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Console</th>
+                    <th>Plateforme</th>
+                    <th>Commentaire</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyCommentaire"></tbody>
+        </table>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
