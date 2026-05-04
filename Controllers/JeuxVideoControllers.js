@@ -1,4 +1,4 @@
-const db = require('../Config/JeuxVideo.js');
+const db = require('../Config/JeuxVideo');
 
 //Travail Sean
 
