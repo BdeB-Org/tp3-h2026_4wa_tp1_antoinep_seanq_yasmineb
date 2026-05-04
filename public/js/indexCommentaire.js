@@ -27,7 +27,7 @@ async function chargerCommentaires() {
         data.forEach(Commentaire => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Commentaire.Joueurs_id}</td>
+                <td>${escapeHtml(Commentaire.Joueurs_id)}</td>
                 <td>${escapeHtml(Commentaire.Console_type)}</td>
                 <td>${escapeHtml(Commentaire.Plateforme_nom)}</td>
                 <td>${escapeHtml(Commentaire.Commentaire_jeu)}</td>
@@ -46,6 +46,7 @@ async function chargerCommentaires() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const Joueurs_id = document.getElementById('Joueurs_id').value.trim();
     const Console_type = document.getElementById('Console_type').value.trim();
     const Plateforme_nom = document.getElementById('Plateforme_nom').value.trim();
     const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
@@ -53,7 +54,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const res = await apiFetch('/api/Commentaire', {
             method: 'POST',
-            body: JSON.stringify({ Console_type, Plateforme_nom, Commentaire_jeu })
+            body: JSON.stringify({ Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu })
         });
 
         const data = await res.json();

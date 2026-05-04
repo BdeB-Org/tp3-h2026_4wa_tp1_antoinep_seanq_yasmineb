@@ -86,15 +86,16 @@ exports.getCommentaire = (req,res)=> {
 
 //Ajoute dans Commentaire
 exports.addCommentaire = (req,res)=>{
+    const Joueurs_id = req.body.Joueurs_id;
     const Console_type = req.body.Console_type;
     const Plateforme_nom = req.body.Plateforme_nom;
     const Commentaire_jeu = req.body.Commentaire_jeu;
 
-    console.log("Insertion:",  Console_type, Plateforme_nom, Commentaire_jeu);
+    console.log("Insertion:", Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu);
 
     db.run(
-    "INSERT INTO Commentaire( Console_type, Plateforme_nom, Commentaire_jeu) VALUES (?,?,?,?)",
-    [ Console_type, Plateforme_nom, Commentaire_jeu],
+    "INSERT INTO Commentaire( Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu) VALUES (?,?,?,?)",
+    [Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu],
     function(err){
         if(err){
             console.log(err);

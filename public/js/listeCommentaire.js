@@ -26,7 +26,7 @@ async function chargerCommentaires() {
         data.forEach(Commentaire => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Commentaire.Joueurs_id}</td>
+                <td>${escapeHtml(Commentaire.Joueurs_id)}</td>
                 <td>${escapeHtml(Commentaire.Console_type)}</td>
                 <td>${escapeHtml(Commentaire.Plateforme_nom)}</td>
                 <td>${escapeHtml(Commentaire.Commentaire_jeu)}</td>
@@ -42,11 +42,11 @@ async function chargerCommentaires() {
     }
 }
 
-async function supprimerCommentaire(Joueurs_id) {
+async function supprimerCommentaire(id) {
     if (!confirm('Voulez-vous vraiment supprimer ce commentaire?')) return;
 
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id, { method: 'DELETE' });
+        const res = await apiFetch('/api/Commentaire/' + id, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {
