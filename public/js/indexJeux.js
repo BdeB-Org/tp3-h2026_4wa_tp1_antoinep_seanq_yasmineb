@@ -28,8 +28,8 @@ async function chargerJeux() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${Jeux.Jeux_id}</td>
-                <td>${escapeHtml(Jeux.nom)}</td>
-                <td>${escapeHtml(Jeux.note)}</td>
+                <td>${escapeHtml(Jeux.Jeux_nom)}</td>
+                <td>${escapeHtml(Jeux.Jeux_note)}</td>
                 <td>
                     <a class="btn-link" href="/edit.html?id=${Jeux.Jeux_id}">Modifier</a>
                     <button class="danger" onclick="supprimerJeu(${Jeux.Jeux_id})">Supprimer</button>
@@ -49,9 +49,9 @@ form.addEventListener('submit', async (e) => {
     const note = document.getElementById('note').value.trim();
 
     try {
-        const res = await apiFetch('/api/Jeux', {
+        const res = await apiFetch('/api/Jeux/', {
             method: 'POST',
-            body: JSON.stringify({ nom, note })
+            body: JSON.stringify({ Jeux_nom, Jeux_note })
         });
 
         const data = await res.json();
@@ -68,11 +68,11 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-async function supprimerJeux(id) {
+async function supprimerJeux(Jeux_id) {
     if (!confirm('Voulez-vous vraiment supprimer ce jeu ?')) return;
 
     try {
-        const res = await apiFetch('/api/Jeux/' + id, {
+        const res = await apiFetch('/api/Jeux/' + Jeux_id, {
             method: 'DELETE'
         });
 

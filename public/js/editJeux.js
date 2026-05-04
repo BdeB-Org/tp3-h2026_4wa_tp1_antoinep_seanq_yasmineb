@@ -18,8 +18,8 @@ async function chargerEtudiant() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('nom').value = data.nom;
-        document.getElementById('note').value = data.note;
+        document.getElementById('nom').value = data.Jeux_nom;
+        document.getElementById('note').value = data.Jeux_note;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -34,7 +34,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const res = await apiFetch('/api/Jeux/' + Jeux_id, {
             method: 'PUT',
-            body: JSON.stringify({ nom, note })
+            body: JSON.stringify({ Jeux_nom, Jeux_note })
         });
 
         const data = await res.json();
