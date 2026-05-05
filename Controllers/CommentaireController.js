@@ -5,9 +5,25 @@ const db = require('../Config/JeuxVideo');
 //Table Commentaire
 exports.getCommentaire = (req,res)=> {
     db.all('SELECT * FROM Commentaire',(err,rows)=> {
+        if (err) {
+            return res.status(500).json({ erreur: err.message });
+        }
         res.json(rows);
-        });
-    };
+    });
+};
+
+exports.getCommentaireById = (req, res) => {
+    const id = req.params.id;
+    db.get('SELECT * FROM Commentaire WHERE Commentaire_id = ?', [id], (err, row) => {
+        if (err) {
+            return res.status(500).json({ erreur: err.message });
+        }
+        if (!row) {
+            return res.status(404).json({ message: 'Commentaire introuvable' });
+        }
+        res.json(row);
+    });
+};
 
 //Ajoute dans Commentaire
 exports.addCommentaire = (req,res)=>{
@@ -55,20 +71,17 @@ exports.updateCommentaireById = (req, res) => {
 // Supprimer dans Commentaire
 exports.deleteCommentaireById = (req, res) => {
     const id = req.params.id;
-    // Vérifier que l'id est fourni
     if (!id) {
         return res.status(400).json({ message: "ID manquant" });
     }
-    // Exécuter la requête SQL avec callback
     db.run(
-        'DELETE FROM Commentaire WHERE Joueurs_id = ?',
+        'DELETE FROM Commentaire WHERE Commentaire_id = ?',
         [id],
         function(err) {
             if (err) {
                 console.error(err);
                 return res.status(500).json({ erreur: err.message });
             }
-            // Vérifier si une ligne a été supprimée
             if (this.changes === 0) {
                 return res.status(404).json({ message: "Aucun Commentaire trouvé avec cet ID" });
             }
