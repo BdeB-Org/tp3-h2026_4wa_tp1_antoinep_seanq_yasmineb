@@ -10,11 +10,15 @@ app.use(express.static('public'));
 
 const JeuxVideoRoutes = require("./Routes/JeuxVideoRoutes");
  const authRoutes = require('./Routes/authRoutes');
+const CommentaireRoute = require('./Routes/CommentaireRoute');
+const JoueurRoute = require('./Routes/JoueurRoute');
 
 app.use(express.json());
  
 app.use("/api/", JeuxVideoRoutes);
- app.use('/api/auth', authRoutes);
+app.use('/api/', CommentaireRoute);
+app.use('/api/', JoueurRoute);
+app.use('/api/auth', authRoutes);
 
 // Redirection par défaut
 app.get('/', (req, res) => {

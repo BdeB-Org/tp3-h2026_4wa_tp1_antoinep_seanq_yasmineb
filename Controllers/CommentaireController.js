@@ -19,7 +19,7 @@ exports.addCommentaire = (req,res)=>{
     console.log("Insertion:", Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu);
 
     db.run(
-    "INSERT INTO Commentaire( Console_type, Plateforme_nom, Commentaire_jeu) VALUES (?,?,?,?)",
+    "INSERT INTO Commentaire( Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu) VALUES (?,?,?,?)",
     [ Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu],
     function(err){
         if(err){

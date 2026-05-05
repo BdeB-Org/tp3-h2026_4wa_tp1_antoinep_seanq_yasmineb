@@ -29,6 +29,38 @@ db.serialize(() => {
         "INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
         ['admin', 'admin123']
     );
+
+    // Table Jeux
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Jeux (
+            Jeux_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Jeux_nom TEXT,
+            Jeux_note TEXT
+        )
+    `);
+
+    // Table Joueur
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Joueur (
+            Joueurs_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Nom TEXT,
+            Prénom TEXT,
+            Pseudo TEXT,
+            Nbr_jeux_joues INTEGER
+        )
+    `);
+
+    // Table Commentaire
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Commentaire (
+            Commentaire_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Joueurs_id INTEGER,
+            Console_type TEXT,
+            Plateforme_nom TEXT,
+            Commentaire_jeu TEXT,
+            FOREIGN KEY (Joueurs_id) REFERENCES Joueur(Joueurs_id)
+        )
+    `);
 });
 
 module.exports = db;
