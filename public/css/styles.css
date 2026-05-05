@@ -51,6 +51,24 @@ button.secondary, .btn-secondary {
     background: #6b7280;
 }
 
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 24px 2vw;
+    background: #588cd4;
+    width: 96vw;
+}
+
+.accueil-btn {
+    background: #1a3560;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
 .actions {
     display: flex;
     gap: 8px;
