@@ -11,7 +11,7 @@ function showMessage(text, isError = false) {
 
 async function chargerCommentaires() {
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id);
+        const res = await apiFetch('/api/Commentaire/' + id);
         const data = await res.json();
 
         if (!res.ok) {
@@ -36,7 +36,7 @@ form.addEventListener('submit', async (e) => {
     const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
 
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id, {
+        const res = await apiFetch('/api/Commentaire/' + id, {
             method: 'PUT',
             body: JSON.stringify({ Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu })
         });

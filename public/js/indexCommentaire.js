@@ -27,13 +27,14 @@ async function chargerCommentaires() {
         data.forEach(Commentaire => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
+                <td>${Commentaire.Commentaire_id}</td>
                 <td>${escapeHtml(Commentaire.Joueurs_id)}</td>
                 <td>${escapeHtml(Commentaire.Console_type)}</td>
                 <td>${escapeHtml(Commentaire.Plateforme_nom)}</td>
                 <td>${escapeHtml(Commentaire.Commentaire_jeu)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Commentaire.Joueurs_id}">Modifier</a>
-                    <button class="danger" onclick="supprimerCommentaire(${Commentaire.Joueurs_id})">Supprimer</button>
+                    <a class="btn-link" href="/editCommentaires.html?id=${Commentaire.Commentaire_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerCommentaire(${Commentaire.Commentaire_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -71,11 +72,11 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-async function supprimerCommentaire(Joueurs_id) {
+async function supprimerCommentaire(Commentaire_id) {
     if (!confirm('Voulez-vous vraiment supprimer ce commentaire?')) return;
 
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id, {
+        const res = await apiFetch('/api/Commentaire/' + Commentaire_id, {
             method: 'DELETE'
         });
 
