@@ -18,6 +18,7 @@ async function chargerCommentaires() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
+        document.getElementById('Joueurs_id').value = data.Joueurs_id;
         document.getElementById('Console_type').value = data.Console_type;
         document.getElementById('Plateforme_nom').value = data.Plateforme_nom;
         document.getElementById('Commentaire_jeu').value = data.Commentaire_jeu;
@@ -29,14 +30,15 @@ async function chargerCommentaires() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const Joueurs_id = document.getElementById('Joueurs_id').value.trim();
     const Console_type = document.getElementById('Console_type').value.trim();
     const Plateforme_nom = document.getElementById('Plateforme_nom').value.trim();
     const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
 
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id, {
+        const res = await apiFetch('/api/Commentaire/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ Console_type, Plateforme_nom, Commentaire_jeu })
+            body: JSON.stringify({ Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu })
         });
 
         const data = await res.json();
@@ -47,7 +49,7 @@ form.addEventListener('submit', async (e) => {
 
         showMessage(data.message);
         setTimeout(() => {
-            window.location.href = '/liste.html';
+            window.location.href = '/listeCommentaire.html';
         }, 800);
     } catch (err) {
         showMessage(err.message, true);

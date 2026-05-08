@@ -27,13 +27,14 @@ async function chargerCommentaires() {
         data.forEach(Commentaire => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Commentaire.Joueurs_id}</td>
+                <td>${Commentaire.Commentaire_id}</td>
+                <td>${escapeHtml(Commentaire.Joueurs_id)}</td>
                 <td>${escapeHtml(Commentaire.Console_type)}</td>
                 <td>${escapeHtml(Commentaire.Plateforme_nom)}</td>
                 <td>${escapeHtml(Commentaire.Commentaire_jeu)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Commentaire.Joueurs_id}">Modifier</a>
-                    <button class="danger" onclick="supprimerCommentaire(${Commentaire.Joueurs_id})">Supprimer</button>
+                    <a class="btn-link" href="/editCommentaires.html?id=${Commentaire.Commentaire_id}">Modifier</a>
+                    <button class="danger" onclick="supprimerCommentaire(${Commentaire.Commentaire_id})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -46,6 +47,7 @@ async function chargerCommentaires() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const Joueurs_id = document.getElementById('Joueurs_id').value.trim();
     const Console_type = document.getElementById('Console_type').value.trim();
     const Plateforme_nom = document.getElementById('Plateforme_nom').value.trim();
     const Commentaire_jeu = document.getElementById('Commentaire_jeu').value.trim();
@@ -53,7 +55,7 @@ form.addEventListener('submit', async (e) => {
     try {
         const res = await apiFetch('/api/Commentaire', {
             method: 'POST',
-            body: JSON.stringify({ Console_type, Plateforme_nom, Commentaire_jeu })
+            body: JSON.stringify({ Joueurs_id, Console_type, Plateforme_nom, Commentaire_jeu })
         });
 
         const data = await res.json();
@@ -70,11 +72,11 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-async function supprimerCommentaire(Joueurs_id) {
+async function supprimerCommentaire(Commentaire_id) {
     if (!confirm('Voulez-vous vraiment supprimer ce commentaire?')) return;
 
     try {
-        const res = await apiFetch('/api/Commentaire/' + Joueurs_id, {
+        const res = await apiFetch('/api/Commentaire/' + Commentaire_id, {
             method: 'DELETE'
         });
 
