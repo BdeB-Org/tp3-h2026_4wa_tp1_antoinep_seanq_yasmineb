@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un joueur</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="accueil-btn" href="/accueil.html">Accueil</a>
+        <button class="secondary" onclick="logout()">Déconnexion</button>
+    </div>
+
+    <div class="container" style="max-width: 700px;">
+        <div class="topbar">
+            <div>
+                <h1>Modifier un joueur</h1>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/listeJoueur.html">Retour à la liste</a>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <form id="formEdit">
+            <input type="text" id="Joueurs_id" placeholder="ID du joueur" required>
+            <input type="text" id="Nom" placeholder="Nom" required>
+            <input type="text" id="Prénom" placeholder="Prénom" required>
+            <input type="text" id="Pseudo" placeholder="Pseudo" required>
+            <input type="text" id="Nbr_jeux_joues" placeholder="Nombre de jeux joués" required>
+            <button type="submit">Enregistrer les modifications</button>
+        </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/editJoueur.js"></script>
+</body>
+</html>
