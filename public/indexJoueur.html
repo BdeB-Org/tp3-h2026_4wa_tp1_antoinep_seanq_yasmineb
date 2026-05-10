@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des joueurs</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="accueil-btn" href="/accueil.html">Accueil</a>
+        <button class="secondary" onclick="logout()">Déconnexion</button>
+    </div>
+
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h1>Gestion des joueurs</h1>
+                <p class="small">Ajout et affichage dans un tableau</p>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/listeJoueur.html">Voir la liste complète</a>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <h2>Ajouter un joueur</h2>
+        <form id="formAjout">
+            <input type="text" id="Joueurs_id" placeholder="ID du joueur" required>
+            <input type="text" id="Nom" placeholder="Nom" required>
+            <input type="text" id="Prénom" placeholder="Prénom" required>
+            <input type="text" id="Pseudo" placeholder="Pseudo" required>
+            <input type="text" id="Nbr_jeux_joues" placeholder="Nombre de jeux joués" required>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <h2>Ensemble des joueurs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID du joueur</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Pseudo</th>
+                    <th>Nombre de jeux joués</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyJoueur"></tbody>
+        </table>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/indexJoueur.js"></script>
+</body>
+</html>
