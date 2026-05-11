@@ -33,7 +33,7 @@ async function chargerCommentaires() {
                 <td>${escapeHtml(Commentaire.Plateforme_nom)}</td>
                 <td>${escapeHtml(Commentaire.Commentaire_jeu)}</td>
                 <td>
-                    <a class="btn-link" href="/editCommentaires.html?id=${Commentaire.Commentaire_id}">Modifier</a>
+                    <a class="btn-link" href="/editCommentaire.html?id=${Commentaire.Commentaire_id}">Modifier</a>
                     <button class="danger" onclick="supprimerCommentaire(${Commentaire.Commentaire_id})">Supprimer</button>
                 </td>
             `;

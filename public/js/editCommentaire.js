@@ -57,7 +57,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID joueur manquant', true);
+    showMessage('ID commentaire manquant', true);
 } else {
     chargerCommentaires();
 }
