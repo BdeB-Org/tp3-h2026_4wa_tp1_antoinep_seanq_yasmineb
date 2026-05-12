@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des joueurs</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a class="accueil-btn" href="/accueil.html">Accueil</a>
+        <button class="secondary" onclick="logout()">Déconnexion</button>
+    </div>
+
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h1>Liste des joueurs</h1>
+                <p class="small">Modifier et supprimer des joueurs existants</p>
+            </div>
+            <div class="actions">
+                <a class="btn-link" href="/indexJoueur.html">Retour à l'ajout</a>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du joueur</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Pseudo</th>
+                    <th>Nombre de jeux joués</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyListe"></tbody>
+        </table>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/listeJoueur.js"></script>
+</body>
+</html>

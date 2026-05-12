@@ -5,12 +5,10 @@ const db = require('../Config/JeuxVideo');
 //Table Commentaire
 exports.getCommentaire = (req,res)=> {
     db.all('SELECT * FROM Commentaire',(err,rows)=> {
-        if (err) {
-            return res.status(500).json({ erreur: err.message });
-        }
+        if (err);
         res.json(rows);
-    });
-};
+        });
+    };
 
 exports.getCommentaireById = (req, res) => {
     const id = req.params.id;
@@ -71,6 +69,7 @@ exports.updateCommentaireById = (req, res) => {
 // Supprimer dans Commentaire
 exports.deleteCommentaireById = (req, res) => {
     const id = req.params.id;
+    // Exécuter la requête SQL avec callback
     if (!id) {
         return res.status(400).json({ message: "ID manquant" });
     }
@@ -82,6 +81,7 @@ exports.deleteCommentaireById = (req, res) => {
                 console.error(err);
                 return res.status(500).json({ erreur: err.message });
             }
+            // Vérifier si une ligne a été supprimée
             if (this.changes === 0) {
                 return res.status(404).json({ message: "Aucun Commentaire trouvé avec cet ID" });
             }

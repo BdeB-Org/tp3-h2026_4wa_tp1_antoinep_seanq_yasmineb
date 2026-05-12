@@ -9,6 +9,19 @@ exports.getJoueur = (req,res)=> {
         });
     };
 
+exports.getJoueurById = (req, res) => {
+    const id = req.params.id;
+    db.get('SELECT * FROM Joueur WHERE Joueurs_id = ?', [id], (err, row) => {
+        if (err) {
+            return res.status(500).json({ erreur: err.message });
+        }
+        if (!row) {
+            return res.status(404).json({ message: 'Joueur introuvable' });
+        }
+        res.json(row);
+    });
+};
+
 // Ajoute dans Joueur
 exports.addJoueur = (req,res)=>{
     const Nom = req.body.Nom;
